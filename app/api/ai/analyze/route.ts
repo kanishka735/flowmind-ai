@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { GoogleGenerativeAI } from '@google/generative-ai'
+import { GoogleGenAI } from '@google/genai'
 import { AnalyzeRequest, AIAnalysis } from '@/lib/types'
 
-const ai = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!)
+// @google/genai — current Google SDK, compatible with AQ. format API keys
+const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! })
 
 export async function POST(req: NextRequest) {
   try {
@@ -53,7 +54,7 @@ ${taskSummary}
 Respond with a valid JSON object (no markdown, no code blocks, just pure JSON) matching this exact structure:
 {
   "briefing": "2-3 sentence personalized briefing summarizing the user's situation and most important focus",
-  "overloadDetected": true/false (true if totalEstimatedHours > availableHours * 1.3),
+  "overloadDetected": true or false (true if totalEstimatedHours > availableHours * 1.3),
   "overloadMessage": "Brief message if overloaded, explaining the situation and what to prioritize (null if not overloaded)",
   "prioritizedTasks": [
     { "taskId": "task_title_here", "rank": 1, "reason": "Why this is ranked first" },
@@ -80,21 +81,21 @@ Rules:
 - Use task titles (not IDs) in prioritizedTasks.taskId field
 - Return ONLY valid JSON, nothing else`
 
-    const model = ai.getGenerativeModel({
+    const response = await ai.models.generateContent({
       model: 'gemini-2.0-flash',
-      generationConfig: {
+      contents: prompt,
+      config: {
         temperature: 0.7,
         maxOutputTokens: 1500,
       },
     })
 
-    const result = await model.generateContent(prompt)
-    const rawText = result.response.text()?.trim() || ''
+    const rawText = response.text?.trim() || ''
 
     // Parse the JSON response
     let analysis: AIAnalysis
     try {
-      // Strip markdown code blocks if present
+      // Strip markdown code blocks if Gemini adds them despite instructions
       const cleaned = rawText
         .replace(/^```json\s*/i, '')
         .replace(/^```\s*/i, '')
