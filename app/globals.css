@@ -233,17 +233,23 @@ body {
     background-color: #13131A;
     border-radius: 1rem;
     border: 1px solid #2A2A3A;
-    padding: 1.5rem;
+    padding: 1rem;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  }
+  @media (min-width: 640px) {
+    .card { padding: 1.5rem; }
   }
 
   .card-hover {
     background-color: #13131A;
     border-radius: 1rem;
     border: 1px solid #2A2A3A;
-    padding: 1.5rem;
+    padding: 1rem;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
     transition: all 0.3s;
+  }
+  @media (min-width: 640px) {
+    .card-hover { padding: 1.5rem; }
   }
   .card-hover:hover {
     border-color: rgba(108, 99, 255, 0.3);

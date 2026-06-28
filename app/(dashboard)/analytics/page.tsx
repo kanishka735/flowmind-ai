@@ -4,7 +4,6 @@ import { useMemo } from 'react'
 import { motion } from 'framer-motion'
 import {
   BarChart3,
-  TrendingUp,
   CheckCircle2,
   Clock,
   AlertTriangle,
@@ -77,7 +76,7 @@ export default function AnalyticsPage() {
 
   if (loading) {
     return (
-      <div className="p-6 lg:p-8 max-w-4xl mx-auto">
+      <div className="max-w-4xl mx-auto">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
           {[...Array(4)].map((_, i) => <div key={i} className="h-28 skeleton rounded-2xl" />)}
         </div>
@@ -89,7 +88,7 @@ export default function AnalyticsPage() {
   }
 
   return (
-    <div className="p-6 lg:p-8 max-w-4xl mx-auto animate-fade-in">
+    <div className="max-w-4xl mx-auto animate-fade-in">
       {/* Header */}
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-1">
@@ -141,7 +140,7 @@ export default function AnalyticsPage() {
             className="bg-[#13131A] border border-[#2A2A3A] rounded-2xl p-5"
           >
             <div className={cn('w-9 h-9 rounded-xl flex items-center justify-center mb-3', s.bg)}>
-              <s.icon className={cn('w-4.5 h-4.5', s.color)} />
+              <s.icon className={cn('w-4 h-4', s.color)} />
             </div>
             <div className={cn('text-2xl font-black mb-0.5', s.color)}>{s.value}</div>
             <div className="text-xs text-[#8B8BA7]">{s.label}</div>

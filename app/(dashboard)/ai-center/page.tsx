@@ -8,7 +8,6 @@ import {
   Loader2,
   AlertTriangle,
   CheckCircle2,
-  Clock,
   Target,
   TrendingUp,
   Zap,
@@ -22,7 +21,7 @@ import {
 import { useAuth } from '@/lib/hooks/useAuth'
 import { useTasks } from '@/lib/hooks/useTasks'
 import { AIAnalysis, AnalyzeRequest } from '@/lib/types'
-import { getTimeOfDay, formatDuration } from '@/lib/utils/date'
+import { getTimeOfDay } from '@/lib/utils/date'
 import { getTotalEstimatedHours } from '@/lib/utils/priority'
 import { cn } from '@/lib/utils/cn'
 
@@ -95,20 +94,21 @@ export default function AICenterPage() {
   }
 
   return (
-    <div className="p-6 lg:p-8 max-w-4xl mx-auto animate-fade-in">
+    <div className="max-w-4xl mx-auto">
       {/* Page Header */}
       <div className="mb-8">
-        <div className="flex items-center gap-3 mb-2">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500/20 to-teal-500/20 border border-purple-500/30 flex items-center justify-center">
+        <div className="flex flex-wrap items-start gap-3">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500/20 to-teal-500/20 border border-purple-500/30 flex items-center justify-center flex-shrink-0">
             <Brain className="w-5 h-5 text-purple-400" />
           </div>
-          <div>
-            <h1 className="text-2xl font-black text-[#F0F0FF]">AI Command Center</h1>
+          <div className="flex-1 min-w-0">
+            <h1 className="text-xl sm:text-2xl font-black text-[#F0F0FF]">AI Command Center</h1>
             <p className="text-[#8B8BA7] text-sm">Powered by Google Gemini 2.0 Flash</p>
           </div>
-          <div className="ml-auto flex items-center gap-1.5 text-xs text-teal-400 bg-teal-400/10 border border-teal-400/20 rounded-full px-3 py-1">
+          <div className="flex items-center gap-1.5 text-xs text-teal-400 bg-teal-400/10 border border-teal-400/20 rounded-full px-3 py-1 flex-shrink-0 self-center">
             <div className="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse" />
-            Gemini Active
+            <span className="hidden sm:inline">Gemini Active</span>
+            <span className="sm:hidden">Live</span>
           </div>
         </div>
       </div>

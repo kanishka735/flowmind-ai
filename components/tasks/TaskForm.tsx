@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, Loader2, Calendar, Clock, Tag, Flame, ChevronDown } from 'lucide-react'
+import { X, Loader2, Calendar, Clock, Tag, Flame } from 'lucide-react'
 import { Task, Priority, Category, Difficulty } from '@/lib/types'
 import { cn } from '@/lib/utils/cn'
 

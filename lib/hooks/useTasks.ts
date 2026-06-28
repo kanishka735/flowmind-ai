@@ -22,6 +22,7 @@ export function useTasks(userId: string | undefined) {
 
   useEffect(() => {
     if (!userId) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setTasks([])
       setLoading(false)
       return

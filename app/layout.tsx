@@ -19,7 +19,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="animated-bg min-h-screen">{children}</body>
+      {/* Remove animated-bg: background-size 400% on every page is unnecessary overhead */}
+      <body className="min-h-screen bg-[#0A0A0F] text-[#F0F0FF]">{children}</body>
     </html>
   )
 }

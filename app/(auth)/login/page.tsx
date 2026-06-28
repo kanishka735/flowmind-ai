@@ -36,8 +36,12 @@ function LoginContent() {
     try {
       await signInWithGoogle()
       router.push('/dashboard')
-    } catch (err: unknown) {
-      const message = err instanceof Error ? err.message : 'Failed to sign in with Google. Please try again.'
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (err: any) {
+      let message = err?.message || 'Failed to sign in with Google. Please try again.'
+      if (err?.code === 'auth/unauthorized-domain') {
+        message = 'Deployment Error: This domain is not authorized. Please add your Vercel URL to Firebase Console > Authentication > Settings > Authorized domains.'
+      }
       setError(message)
     } finally {
       setIsGoogleLoading(false)
@@ -50,8 +54,12 @@ function LoginContent() {
     try {
       await signInAsGuest()
       router.push('/dashboard')
-    } catch (err: unknown) {
-      const message = err instanceof Error ? err.message : 'Failed to sign in as guest. Please try again.'
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (err: any) {
+      let message = err?.message || 'Failed to sign in as guest. Please try again.'
+      if (err?.code === 'auth/unauthorized-domain') {
+        message = 'Deployment Error: This domain is not authorized. Please add your Vercel URL to Firebase Console > Authentication > Settings > Authorized domains.'
+      }
       setError(message)
     } finally {
       setIsGuestLoading(false)

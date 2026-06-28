@@ -8,7 +8,7 @@ import Link from 'next/link'
 import { formatDeadline, getDeadlineUrgency, formatDuration } from '@/lib/utils/date'
 import { cn } from '@/lib/utils/cn'
 import { Task } from '@/lib/types'
-import { isToday, isPast, addDays, isAfter } from 'date-fns'
+import { isToday, isPast } from 'date-fns'
 
 const containerVariants = {
   hidden: { opacity: 0 },

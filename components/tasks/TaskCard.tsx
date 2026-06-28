@@ -8,9 +8,7 @@ import {
   Edit3,
   CheckCircle2,
   Circle,
-  ChevronRight,
   CalendarDays,
-  Zap,
 } from 'lucide-react'
 import { Task } from '@/lib/types'
 import { formatDeadline, getDeadlineUrgency, formatDuration } from '@/lib/utils/date'
@@ -137,8 +135,8 @@ export function TaskCard({ task, onEdit, onDelete, onComplete, index = 0 }: Task
             )}
           </div>
 
-          {/* Action buttons - visible on hover */}
-          <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex-shrink-0">
+          {/* Action buttons — always visible on mobile (touch), hover-reveal on desktop */}
+          <div className="flex items-center gap-1 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-200 flex-shrink-0">
             <button
               id={`task-edit-${task.id}`}
               onClick={() => onEdit(task)}

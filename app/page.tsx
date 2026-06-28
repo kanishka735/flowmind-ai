@@ -174,7 +174,7 @@ export default function LandingPage() {
           {/* Bottom fade overlay */}
           <div style={{ position: 'absolute', left: '24px', right: '24px', bottom: 0, height: '80px', background: 'linear-gradient(to top, #0A0A0F, transparent)', zIndex: 2, pointerEvents: 'none' }} />
           <div className="glass" style={{ borderRadius: '16px', padding: '24px', border: '1px solid rgba(108,99,255,0.2)', boxShadow: '0 0 30px rgba(108,99,255,0.15)' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '8px', marginBottom: '16px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#00D4AA', animation: 'pulse 2s infinite' }} />
                 <span style={{ fontSize: '13px', fontWeight: 500, color: '#8B8BA7' }}>AI Command Center</span>
@@ -190,7 +190,7 @@ export default function LandingPage() {
                 Consider moving &quot;Research Report&quot; to tomorrow.
               </p>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px' }}>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               {[['5', 'Tasks Today'], ['2.5h', 'Focus Time'], ['87%', 'On Track']].map(([val, label]) => (
                 <div key={label} style={{ backgroundColor: '#1C1C27', borderRadius: '10px', padding: '12px', textAlign: 'center', border: '1px solid rgba(255,255,255,0.05)' }}>
                   <div className="gradient-text" style={{ fontSize: '20px', fontWeight: 700 }}>{val}</div>
@@ -204,7 +204,7 @@ export default function LandingPage() {
 
       {/* ── Stats Bar ── */}
       <section style={{ width: '100%', borderTop: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)', padding: '48px 0' }}>
-        <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px', textAlign: 'center' }}>
+        <div className="max-w-4xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
           {[
             { value: '10K+', label: 'Tasks Completed' },
             { value: '94%', label: 'On-Time Rate' },
@@ -277,7 +277,7 @@ export default function LandingPage() {
       <section style={{ width: '100%', padding: '80px 0' }}>
         <div style={{ maxWidth: '640px', margin: '0 auto', padding: '0 24px' }}>
           <div style={{ padding: '1px', borderRadius: '20px', background: 'linear-gradient(135deg, #6C63FF, #00D4AA)' }}>
-            <div style={{ backgroundColor: '#0A0A0F', borderRadius: '19px', padding: '48px 40px', textAlign: 'center' }}>
+            <div className="bg-[#0A0A0F] rounded-[19px] py-12 px-6 sm:px-10 text-center">
               <div style={{ width: '48px', height: '48px', borderRadius: '12px', backgroundColor: 'rgba(108,99,255,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 24px' }}>
                 <BarChart3 style={{ width: '24px', height: '24px', color: '#a78bfa' }} />
               </div>

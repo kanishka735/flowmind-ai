@@ -1,4 +1,4 @@
-import { format, formatDistanceToNow, isPast, isToday, isTomorrow, differenceInDays, differenceInHours } from 'date-fns'
+import { format, isPast, isToday, isTomorrow, differenceInDays, differenceInHours } from 'date-fns'
 
 export function formatDeadline(dateStr: string): string {
   const date = new Date(dateStr)

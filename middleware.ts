@@ -11,7 +11,7 @@ import type { NextRequest } from 'next/server'
  *
  * This middleware is intentionally a pass-through.
  */
-export function middleware(request: NextRequest) {
+export function middleware(_request: NextRequest) {
   return NextResponse.next()
 }
 
