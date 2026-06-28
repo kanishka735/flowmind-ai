@@ -1,35 +1,22 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
-// Paths that require authentication
-const protectedPaths = ['/dashboard', '/tasks', '/ai-center', '/analytics']
-
-// Paths only for unauthenticated users
-const authPaths = ['/login']
-
+/**
+ * Firebase uses client-side authentication (IndexedDB / localStorage).
+ * It does NOT set server-readable cookies, so middleware cannot check auth state.
+ *
+ * Route protection is handled client-side inside:
+ *   app/(dashboard)/layout.tsx  →  redirects to /login when user is null
+ *   app/(auth)/login/page.tsx   →  redirects to /dashboard when user exists
+ *
+ * This middleware is intentionally a pass-through.
+ */
 export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl
-  
-  // Check for Firebase auth session cookie
-  // Firebase uses client-side auth, so we use a simple cookie approach
-  const authCookie = request.cookies.get('auth-token')
-  const isAuthenticated = !!authCookie
-
-  // Redirect authenticated users away from login
-  if (isAuthenticated && authPaths.some(path => pathname.startsWith(path))) {
-    return NextResponse.redirect(new URL('/dashboard', request.url))
-  }
-
-  // Redirect unauthenticated users to login from protected paths
-  if (!isAuthenticated && protectedPaths.some(path => pathname.startsWith(path))) {
-    return NextResponse.redirect(new URL('/login', request.url))
-  }
-
   return NextResponse.next()
 }
 
 export const config = {
   matcher: [
-    '/((?!api|_next/static|_next/image|favicon.ico|icons).*)',
+    '/((?!api|_next/static|_next/image|favicon.ico).*)',
   ],
 }
