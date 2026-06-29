@@ -144,7 +144,7 @@ export default function DashboardPage() {
       {/* Stats grid */}
       <motion.div variants={itemVariants} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((stat) => (
-          <div key={stat.label} className="card flex flex-col justify-between min-h-[150px] p-6">
+          <div key={stat.label} className="card card-fixed-height flex flex-col justify-between p-6">
             <div>
               <div className="flex items-start justify-between mb-3">
                 <div className={cn('p-2 rounded-xl', stat.bg)}>
@@ -174,7 +174,7 @@ export default function DashboardPage() {
               {[1, 2, 3].map(i => <div key={i} className="skeleton h-12 w-full" />)}
             </div>
           ) : recentTasks.length === 0 ? (
-            <div className="flex flex-col items-center justify-center text-center py-12 flex-1">
+            <div className="flex-center py-12 flex-1">
               <CheckCircle2 className="w-12 h-12 text-teal-400 mb-4" />
               <p className="text-sm text-[#8B8BA7] mb-4">No pending tasks. Add one to get started.</p>
               <Link href="/tasks" className="inline-flex items-center gap-2 btn-primary text-sm px-5 py-2.5">
