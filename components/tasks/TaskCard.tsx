@@ -70,7 +70,7 @@ export function TaskCard({ task, onEdit, onDelete, onComplete, index = 0 }: Task
       exit={{ opacity: 0, x: -20 }}
       transition={{ duration: 0.25, delay: index * 0.04 }}
       className={cn(
-        'group relative bg-[#13131A] border rounded-2xl p-5 transition-all duration-300',
+        'group relative bg-[#13131A] border rounded-2xl p-6 sm:p-8 transition-all duration-300',
         isCompleted
           ? 'border-[#2A2A3A] opacity-60'
           : 'border-[#2A2A3A] hover:border-purple-500/30 hover:shadow-[0_4px_24px_rgba(108,99,255,0.1)]'
@@ -87,7 +87,7 @@ export function TaskCard({ task, onEdit, onDelete, onComplete, index = 0 }: Task
 
       <div className="pl-2">
         {/* Top row: checkbox + title + actions */}
-        <div className="flex items-start gap-3">
+        <div className="flex items-start gap-4">
           {/* Complete toggle */}
           <button
             id={`task-complete-${task.id}`}
@@ -163,7 +163,7 @@ export function TaskCard({ task, onEdit, onDelete, onComplete, index = 0 }: Task
         </div>
 
         {/* Bottom row: meta info */}
-        <div className="flex items-center gap-4 mt-3 flex-wrap">
+        <div className="flex items-center gap-5 mt-4 flex-wrap">
           {/* Category */}
           <span className="flex items-center gap-1 text-xs text-[#8B8BA7]">
             <span>{CATEGORY_EMOJI[task.category]}</span>

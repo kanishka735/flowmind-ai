@@ -126,13 +126,13 @@ export function TaskForm({ onSubmit, onClose, initialData, userId, mode }: TaskF
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           transition={{ duration: 0.2 }}
-          className="relative w-full max-w-lg bg-[#13131A] border border-[#2A2A3A] rounded-2xl shadow-2xl overflow-hidden"
+          className="relative w-full max-w-xl bg-[#13131A] border border-[#2A2A3A] rounded-2xl shadow-2xl overflow-hidden"
         >
           {/* Purple top accent */}
           <div className="h-0.5 bg-gradient-to-r from-purple-500 to-teal-500" />
 
           {/* Header */}
-          <div className="flex items-center justify-between p-6 border-b border-[#2A2A3A]">
+          <div className="flex items-center justify-between p-8 border-b border-[#2A2A3A]">
             <div>
               <h2 className="text-lg font-bold text-[#F0F0FF]">
                 {mode === 'create' ? 'Add New Task' : 'Edit Task'}
@@ -150,17 +150,17 @@ export function TaskForm({ onSubmit, onClose, initialData, userId, mode }: TaskF
           </div>
 
           {/* Form */}
-          <form onSubmit={handleSubmit(handleFormSubmit)} className="p-6 space-y-6 max-h-[70vh] overflow-y-auto">
+          <form onSubmit={handleSubmit(handleFormSubmit)} className="p-8 flex flex-col gap-8 max-h-[70vh] overflow-y-auto">
             {/* Title */}
             <div>
-              <label className="block text-sm font-semibold text-[#F0F0FF] mb-2">
+              <label className="block text-sm font-semibold text-[#F0F0FF] mb-3">
                 Task Title <span className="text-red-400">*</span>
               </label>
               <input
                 {...register('title')}
                 id="task-title"
                 placeholder="e.g., Finish project report"
-                className="input-dark h-12"
+                className="input-dark h-14"
               />
               {errors.title && (
                 <p className="text-red-400 text-xs mt-1">{errors.title.message}</p>
@@ -169,7 +169,7 @@ export function TaskForm({ onSubmit, onClose, initialData, userId, mode }: TaskF
 
             {/* Description */}
             <div>
-              <label className="block text-sm font-semibold text-[#F0F0FF] mb-2">
+              <label className="block text-sm font-semibold text-[#F0F0FF] mb-3">
                 Description <span className="text-[#4A4A6A] font-normal">(optional)</span>
               </label>
               <textarea
@@ -183,7 +183,7 @@ export function TaskForm({ onSubmit, onClose, initialData, userId, mode }: TaskF
 
             {/* Priority */}
             <div>
-              <label className="block text-sm font-semibold text-[#F0F0FF] mb-2">
+              <label className="block text-sm font-semibold text-[#F0F0FF] mb-3">
                 <Flame className="w-4 h-4 inline mr-1 text-orange-400" />
                 Priority <span className="text-red-400">*</span>
               </label>
@@ -194,7 +194,7 @@ export function TaskForm({ onSubmit, onClose, initialData, userId, mode }: TaskF
                     type="button"
                     onClick={() => setValue('priority', opt.value)}
                     className={cn(
-                      'h-10 rounded-xl text-xs font-semibold border transition-all duration-150 flex items-center justify-center text-center',
+                      'h-12 rounded-xl text-xs font-semibold border transition-all duration-150 flex items-center justify-center text-center',
                       watchedPriority === opt.value
                         ? opt.color
                         : 'border-[#2A2A3A] bg-[#1C1C27] text-[#8B8BA7] hover:border-white/20'
@@ -209,7 +209,7 @@ export function TaskForm({ onSubmit, onClose, initialData, userId, mode }: TaskF
             {/* Deadline + Duration row */}
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-semibold text-[#F0F0FF] mb-2">
+                <label className="block text-sm font-semibold text-[#F0F0FF] mb-3">
                   <Calendar className="w-4 h-4 inline mr-1 text-purple-400" />
                   Deadline <span className="text-red-400">*</span>
                 </label>
@@ -218,7 +218,7 @@ export function TaskForm({ onSubmit, onClose, initialData, userId, mode }: TaskF
                   id="task-deadline"
                   type="date"
                   min={today}
-                  className="input-dark h-12 [color-scheme:dark]"
+                  className="input-dark h-14 [color-scheme:dark]"
                 />
                 {errors.deadline && (
                   <p className="text-red-400 text-xs mt-1">{errors.deadline.message}</p>
@@ -226,7 +226,7 @@ export function TaskForm({ onSubmit, onClose, initialData, userId, mode }: TaskF
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-[#F0F0FF] mb-2">
+                <label className="block text-sm font-semibold text-[#F0F0FF] mb-3">
                   <Clock className="w-4 h-4 inline mr-1 text-teal-400" />
                   Est. Time (min)
                 </label>
@@ -237,7 +237,7 @@ export function TaskForm({ onSubmit, onClose, initialData, userId, mode }: TaskF
                   min={15}
                   max={1440}
                   step={15}
-                  className="input-dark h-12"
+                  className="input-dark h-14"
                 />
                 {/* Quick presets */}
                 <div className="flex gap-1.5 mt-2 flex-wrap">
@@ -262,7 +262,7 @@ export function TaskForm({ onSubmit, onClose, initialData, userId, mode }: TaskF
 
             {/* Category */}
             <div>
-              <label className="block text-sm font-semibold text-[#F0F0FF] mb-2">
+              <label className="block text-sm font-semibold text-[#F0F0FF] mb-3">
                 <Tag className="w-4 h-4 inline mr-1 text-blue-400" />
                 Category
               </label>
@@ -273,7 +273,7 @@ export function TaskForm({ onSubmit, onClose, initialData, userId, mode }: TaskF
                     type="button"
                     onClick={() => setValue('category', opt.value)}
                     className={cn(
-                      'h-10 rounded-xl text-xs font-semibold border transition-all duration-150 flex items-center justify-center text-center',
+                      'h-12 rounded-xl text-xs font-semibold border transition-all duration-150 flex items-center justify-center text-center',
                       watchedCategory === opt.value
                         ? 'border-purple-500/50 bg-purple-500/10 text-purple-300'
                         : 'border-[#2A2A3A] bg-[#1C1C27] text-[#8B8BA7] hover:border-white/20'
@@ -287,7 +287,7 @@ export function TaskForm({ onSubmit, onClose, initialData, userId, mode }: TaskF
 
             {/* Difficulty */}
             <div>
-              <label className="block text-sm font-semibold text-[#F0F0FF] mb-2">
+              <label className="block text-sm font-semibold text-[#F0F0FF] mb-3">
                 Difficulty
                 <span className="ml-2 text-[#8B8BA7] font-normal text-xs">
                   ({['', 'Very Easy', 'Easy', 'Moderate', 'Hard', 'Very Hard'][watchedDifficulty]})
@@ -300,7 +300,7 @@ export function TaskForm({ onSubmit, onClose, initialData, userId, mode }: TaskF
                     type="button"
                     onClick={() => setValue('difficulty', level as Difficulty)}
                     className={cn(
-                      'flex-1 h-10 rounded-xl text-sm font-bold transition-all duration-150 flex items-center justify-center',
+                      'flex-1 h-12 rounded-xl text-sm font-bold transition-all duration-150 flex items-center justify-center',
                       watchedDifficulty >= level
                         ? 'bg-gradient-to-b from-purple-500 to-purple-600 text-white'
                         : 'bg-[#1C1C27] text-[#4A4A6A] border border-[#2A2A3A] hover:bg-[#2A2A3A]'
@@ -313,11 +313,11 @@ export function TaskForm({ onSubmit, onClose, initialData, userId, mode }: TaskF
             </div>
 
             {/* Submit */}
-            <div className="flex gap-3 pt-4 border-t border-[#2A2A3A]">
+            <div className="flex gap-4 pt-6 border-t border-[#2A2A3A]">
               <button
                 type="button"
                 onClick={onClose}
-                className="flex-1 h-12 btn-secondary flex items-center justify-center"
+                className="flex-1 h-14 btn-secondary flex items-center justify-center"
               >
                 Cancel
               </button>
@@ -325,7 +325,7 @@ export function TaskForm({ onSubmit, onClose, initialData, userId, mode }: TaskF
                 id="task-submit-btn"
                 type="submit"
                 disabled={isSubmitting}
-                className="flex-1 h-12 btn-primary flex items-center justify-center gap-2"
+                className="flex-1 h-14 btn-primary flex items-center justify-center gap-2"
               >
                 {isSubmitting ? (
                   <>

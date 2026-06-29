@@ -83,9 +83,9 @@ function LoginContent() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="w-full max-w-[420px] mx-auto flex flex-col items-center justify-center"
+        className="w-full max-w-[480px] mx-auto flex flex-col items-center justify-center"
       >
-        <div className="text-center mb-8 flex flex-col items-center">
+        <div className="text-center mb-10 flex flex-col items-center">
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -101,9 +101,9 @@ function LoginContent() {
           <p className="text-[#8B8BA7] text-sm">Your AI productivity partner</p>
         </div>
 
-        <div className="glass w-full rounded-2xl p-6 sm:p-8 border border-purple-500/20 shadow-glow-purple">
-          <h2 className="text-xl font-bold text-center mb-1">Welcome back</h2>
-          <p className="text-[#8B8BA7] text-sm text-center mb-6">
+        <div className="glass w-full rounded-2xl p-8 sm:p-10 border border-purple-500/20 shadow-glow-purple">
+          <h2 className="text-xl font-bold text-center mb-2">Welcome back</h2>
+          <p className="text-[#8B8BA7] text-sm text-center mb-8">
             Sign in to access your personalized AI planner
           </p>
 
@@ -123,7 +123,7 @@ function LoginContent() {
               id="btn-google-login"
               onClick={handleGoogleLogin}
               disabled={isGoogleLoading || isGuestLoading}
-              className="w-full h-12 flex items-center justify-center gap-3 bg-white hover:bg-gray-50 text-gray-900 font-semibold px-6 rounded-xl transition-all duration-200 active:scale-95 disabled:opacity-60 disabled:cursor-not-allowed shadow-sm text-sm"
+              className="w-full h-14 flex items-center justify-center gap-3 bg-white hover:bg-gray-50 text-gray-900 font-semibold px-6 rounded-xl transition-all duration-200 active:scale-95 disabled:opacity-60 disabled:cursor-not-allowed shadow-sm text-base"
             >
               {isGoogleLoading ? (
                 <Loader2 className="w-5 h-5 animate-spin text-gray-600" />
@@ -148,7 +148,7 @@ function LoginContent() {
               id="btn-guest-login"
               onClick={handleGuestLogin}
               disabled={isGoogleLoading || isGuestLoading}
-              className="w-full h-12 flex items-center justify-center gap-3 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-[#F0F0FF] font-semibold px-6 rounded-xl transition-all duration-200 active:scale-95 disabled:opacity-60 disabled:cursor-not-allowed text-sm"
+              className="w-full h-14 flex items-center justify-center gap-3 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-[#F0F0FF] font-semibold px-6 rounded-xl transition-all duration-200 active:scale-95 disabled:opacity-60 disabled:cursor-not-allowed text-base"
             >
               {isGuestLoading ? (
                 <Loader2 className="w-5 h-5 animate-spin" />

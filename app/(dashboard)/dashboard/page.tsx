@@ -139,12 +139,12 @@ export default function DashboardPage() {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="max-w-6xl mx-auto space-y-6"
+      className="max-w-6xl mx-auto flex flex-col gap-10"
     >
       {/* Stats grid */}
-      <motion.div variants={itemVariants} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <motion.div variants={itemVariants} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {stats.map((stat) => (
-          <div key={stat.label} className="card card-fixed-height flex flex-col justify-between p-6">
+          <div key={stat.label} className="card card-fixed-height flex flex-col justify-between p-8">
             <div>
               <div className="flex items-start justify-between mb-3">
                 <div className={cn('p-2 rounded-xl', stat.bg)}>
@@ -159,10 +159,10 @@ export default function DashboardPage() {
         ))}
       </motion.div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Today's focus */}
-        <motion.div variants={itemVariants} className="lg:col-span-2 card flex flex-col justify-between">
-          <div className="flex items-center justify-between mb-5">
+        <motion.div variants={itemVariants} className="lg:col-span-2 card flex flex-col justify-between p-8">
+          <div className="flex items-center justify-between mb-6">
             <h2 className="text-base font-bold">Upcoming Deadlines</h2>
             <Link href="/tasks" className="text-xs text-purple-400 hover:text-purple-300 flex items-center gap-1">
               View all <ArrowRight className="w-3 h-3" />
@@ -189,8 +189,8 @@ export default function DashboardPage() {
         </motion.div>
 
         {/* Productivity score + AI prompt */}
-        <motion.div variants={itemVariants} className="flex flex-col gap-6 h-full justify-between">
-          <div className="card flex-1 flex flex-col justify-center">
+        <motion.div variants={itemVariants} className="flex flex-col gap-8 h-full justify-between">
+          <div className="card flex-1 flex flex-col justify-center p-8">
             <h2 className="text-sm font-bold mb-4 text-[#8B8BA7] uppercase tracking-wider">Productivity Score</h2>
             <div className="flex items-center gap-4">
               <ProductivityRing score={productivityScore} />
@@ -206,7 +206,7 @@ export default function DashboardPage() {
           <Link
             href="/ai-center"
             id="dashboard-ai-btn"
-            className="card group cursor-pointer hover:border-purple-500/40 hover:-translate-y-0.5 transition-all duration-300 flex-1 flex flex-col justify-between"
+            className="card group cursor-pointer hover:border-purple-500/40 hover:-translate-y-0.5 transition-all duration-300 flex-1 flex flex-col justify-between p-8"
           >
             <div>
               <div className="flex items-center gap-2 mb-2">

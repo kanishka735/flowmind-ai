@@ -125,7 +125,7 @@ export default function TasksPage() {
   return (
     <div className="max-w-4xl mx-auto animate-fade-in">
       {/* Page Header */}
-      <div className="flex items-start justify-between mb-8">
+      <div className="flex items-start justify-between mb-10">
         <div>
           <h1 className="text-2xl font-black text-[#F0F0FF]">My Tasks</h1>
           <p className="text-[#8B8BA7] text-sm mt-1">
@@ -155,7 +155,7 @@ export default function TasksPage() {
       </div>
 
       {/* Search + Sort Bar */}
-      <div className="flex gap-3 mb-5">
+      <div className="flex gap-3 mb-8">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#4A4A6A]" />
           <input
@@ -207,7 +207,7 @@ export default function TasksPage() {
       </div>
 
       {/* Filter Tabs */}
-      <div className="flex gap-1.5 mb-6 bg-[#13131A] border border-[#2A2A3A] rounded-xl p-1">
+      <div className="flex gap-2 mb-10 bg-[#13131A] border border-[#2A2A3A] rounded-xl p-1.5">
         {FILTER_TABS.map((tab) => (
           <button
             key={tab.id}
@@ -242,7 +242,7 @@ export default function TasksPage() {
 
       {/* Task List */}
       {loading ? (
-        <div className="space-y-3">
+        <div className="flex flex-col gap-4">
           {[...Array(4)].map((_, i) => (
             <div key={i} className="h-24 skeleton rounded-2xl" />
           ))}
@@ -292,7 +292,7 @@ export default function TasksPage() {
         </motion.div>
       ) : (
         <AnimatePresence mode="popLayout">
-          <div className="space-y-3">
+          <div className="flex flex-col gap-4">
             {sorted.map((task, i) => (
               <TaskCard
                 key={task.id}
