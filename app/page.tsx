@@ -131,7 +131,7 @@ export default function LandingPage() {
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full max-w-md mx-auto">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-5 w-full max-w-lg mx-auto">
             <Link
               href="/login"
               className="flex-1 w-full h-14 inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#6C63FF] to-[#5B54E8] hover:from-[#7B74FF] hover:to-[#6C63FF] text-white font-bold rounded-xl transition-all duration-200 shadow-glow-purple text-base"
@@ -212,7 +212,7 @@ export default function LandingPage() {
         </section>
 
         {/* Features Grid */}
-        <section className="w-full py-24">
+        <section className="w-full py-32">
           <div className="w-full max-w-6xl mx-auto px-6 lg:px-8">
             <div className="text-center mb-16 max-w-3xl mx-auto">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-6 leading-tight">
@@ -222,7 +222,7 @@ export default function LandingPage() {
                 Every feature is built around one goal: helping you complete work, not just track it.
               </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {features.map((feature) => (
                 <div key={feature.title} className="card-hover flex flex-col h-full bg-[#13131A] border border-[#2A2A3A] rounded-2xl p-8 transition-all duration-300 shadow-card">
                   <div className={cn('w-12 h-12 rounded-xl flex items-center justify-center mb-6', feature.iconBg)}>
@@ -237,7 +237,7 @@ export default function LandingPage() {
         </section>
 
         {/* How It Works */}
-        <section className="w-full py-24 bg-gradient-to-b from-transparent via-[#6C63FF]/5 to-transparent">
+        <section className="w-full py-32 bg-gradient-to-b from-transparent via-[#6C63FF]/5 to-transparent">
           <div className="w-full max-w-6xl mx-auto px-6 lg:px-8">
             <div className="text-center mb-16 max-w-3xl mx-auto">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-6 leading-tight">
@@ -247,7 +247,7 @@ export default function LandingPage() {
                 Three steps from overwhelmed to in control.
               </p>
             </div>
-            <div className="flex flex-col gap-6 max-w-3xl mx-auto">
+            <div className="flex flex-col gap-8 max-w-3xl mx-auto">
               {steps.map((step) => (
                 <div key={step.number} className="glass flex items-start sm:items-center gap-6 p-8 rounded-2xl border border-[#2A2A3A] transition-all duration-300 hover:border-[#6C63FF]/30 shadow-card">
                   <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br from-[#6C63FF]/15 to-[#00D4AA]/15 flex items-center justify-center border border-[#6C63FF]/20">
@@ -264,20 +264,20 @@ export default function LandingPage() {
         </section>
 
         {/* Final CTA */}
-        <section className="w-full py-24">
+        <section className="w-full py-32">
           <div className="w-full max-w-6xl mx-auto px-6 lg:px-8">
             <div className="max-w-4xl mx-auto p-[1px] rounded-3xl bg-gradient-to-r from-[#6C63FF] to-[#00D4AA]">
-              <div className="bg-[#0A0A0F] rounded-[23px] py-16 px-8 sm:px-12 text-center flex flex-col items-center shadow-glow-purple">
+              <div className="bg-[#0A0A0F] rounded-[23px] py-20 px-8 sm:px-12 text-center flex flex-col items-center shadow-glow-purple">
                 <div className="w-16 h-16 rounded-2xl bg-[#6C63FF]/15 flex items-center justify-center mb-8 border border-[#6C63FF]/20">
                   <BarChart3 className="w-8 h-8 text-[#a78bfa]" />
                 </div>
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-6 leading-tight">
                   Ready to stop <span className="gradient-text-warm">procrastinating?</span>
                 </h2>
-                <p className="text-base sm:text-lg text-[#8B8BA7] mb-10 max-w-2xl leading-relaxed">
+                <p className="text-base sm:text-lg text-[#8B8BA7] mb-12 max-w-2xl leading-relaxed">
                   Join students and professionals who use FlowMind AI to stay ahead of their deadlines — with an AI that actually helps them complete tasks.
                 </p>
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full max-w-md">
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-5 w-full max-w-lg mx-auto">
                   <Link
                     href="/login"
                     className="flex-1 w-full h-14 inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#6C63FF] to-[#5B54E8] hover:from-[#7B74FF] hover:to-[#6C63FF] text-white font-bold rounded-xl transition-all duration-200 shadow-glow-purple text-base"
@@ -299,7 +299,7 @@ export default function LandingPage() {
       </main>
 
       {/* Footer */}
-      <footer className="w-full border-t border-[#2A2A3A] py-10 bg-[#0A0A0F]">
+      <footer className="w-full border-t border-[#2A2A3A] py-16 bg-[#0A0A0F]">
         <div className="w-full max-w-6xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#6C63FF] to-[#00D4AA] flex items-center justify-center flex-shrink-0">
