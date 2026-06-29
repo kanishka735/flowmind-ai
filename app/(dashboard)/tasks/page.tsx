@@ -251,9 +251,9 @@ export default function TasksPage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center py-16"
+          className="flex flex-col items-center justify-center text-center py-16"
         >
-          <div className="w-16 h-16 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mx-auto mb-4">
+          <div className="w-16 h-16 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mb-4">
             {activeFilter === 'completed' ? (
               <CheckCircle2 className="w-8 h-8 text-teal-400" />
             ) : activeFilter === 'overdue' ? (

@@ -144,14 +144,14 @@ export default function DashboardPage() {
       {/* Stats grid */}
       <motion.div variants={itemVariants} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((stat) => (
-          <div key={stat.label} className="card flex flex-col justify-between">
+          <div key={stat.label} className="card flex flex-col justify-between min-h-[150px] p-6">
             <div>
-              <div className="flex items-start justify-between mb-4">
+              <div className="flex items-start justify-between mb-3">
                 <div className={cn('p-2 rounded-xl', stat.bg)}>
                   <stat.icon className={cn('w-4 h-4', stat.color)} />
                 </div>
               </div>
-              <div className="text-3xl font-black text-[#F0F0FF] mb-1">{stat.value}</div>
+              <div className="text-3xl font-black text-[#F0F0FF] leading-none mb-2">{stat.value}</div>
               <div className="text-xs font-semibold text-[#8B8BA7]">{stat.label}</div>
             </div>
             <div className="text-xs text-[#4A4A6A] mt-2 pt-2 border-t border-white/5">{stat.sub}</div>
@@ -174,10 +174,10 @@ export default function DashboardPage() {
               {[1, 2, 3].map(i => <div key={i} className="skeleton h-12 w-full" />)}
             </div>
           ) : recentTasks.length === 0 ? (
-            <div className="text-center py-8">
-              <CheckCircle2 className="w-10 h-10 text-teal-400 mx-auto mb-3" />
-              <p className="text-sm text-[#8B8BA7]">No pending tasks. Add one to get started.</p>
-              <Link href="/tasks" className="inline-flex items-center gap-2 mt-4 btn-primary text-sm px-4 py-2">
+            <div className="flex flex-col items-center justify-center text-center py-12 flex-1">
+              <CheckCircle2 className="w-12 h-12 text-teal-400 mb-4" />
+              <p className="text-sm text-[#8B8BA7] mb-4">No pending tasks. Add one to get started.</p>
+              <Link href="/tasks" className="inline-flex items-center gap-2 btn-primary text-sm px-5 py-2.5">
                 <Plus className="w-4 h-4" /> Add Task
               </Link>
             </div>
