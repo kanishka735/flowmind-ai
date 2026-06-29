@@ -95,13 +95,12 @@ Rules:
     // Parse the JSON response
     let analysis: AIAnalysis
     try {
-      // Strip markdown code blocks if Gemini adds them despite instructions
-      const cleaned = rawText
-        .replace(/^```json\s*/i, '')
-        .replace(/^```\s*/i, '')
-        .replace(/\s*```$/, '')
-        .trim()
-      analysis = JSON.parse(cleaned)
+      // Robustly extract the JSON object even if Gemini wraps it in markdown or conversational text
+      const match = rawText.match(/\{[\s\S]*\}/)
+      if (!match) {
+        throw new Error('No JSON object found in response')
+      }
+      analysis = JSON.parse(match[0])
     } catch {
       console.error('Failed to parse Gemini response:', rawText)
       return NextResponse.json(

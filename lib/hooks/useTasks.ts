@@ -5,7 +5,6 @@ import {
   collection,
   query,
   where,
-  orderBy,
   onSnapshot,
   addDoc,
   updateDoc,
@@ -30,8 +29,7 @@ export function useTasks(userId: string | undefined) {
 
     const q = query(
       collection(db, 'tasks'),
-      where('userId', '==', userId),
-      orderBy('createdAt', 'desc')
+      where('userId', '==', userId)
     )
 
     const unsubscribe = onSnapshot(q, (snapshot) => {
@@ -39,7 +37,21 @@ export function useTasks(userId: string | undefined) {
         id: doc.id,
         ...doc.data(),
       } as Task))
+      
+      // Client-side sorting to bypass the need for a composite index
+      taskList.sort((a, b) => {
+        // Handle Firestore Timestamps (they might be null during optimistic updates)
+        // @ts-expect-error - Firestore timestamp typing might not match perfectly
+        const timeA = a.createdAt?.toMillis ? a.createdAt.toMillis() : (a.createdAt?.seconds ? a.createdAt.seconds * 1000 : Date.now());
+        // @ts-expect-error - Firestore timestamp typing might not match perfectly
+        const timeB = b.createdAt?.toMillis ? b.createdAt.toMillis() : (b.createdAt?.seconds ? b.createdAt.seconds * 1000 : Date.now());
+        return timeB - timeA;
+      })
+      
       setTasks(taskList)
+      setLoading(false)
+    }, (error) => {
+      console.error("Firestore sync error in useTasks:", error)
       setLoading(false)
     })
 
