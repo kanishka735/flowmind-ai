@@ -189,8 +189,8 @@ export default function DashboardPage() {
         </motion.div>
 
         {/* Productivity score + AI prompt */}
-        <motion.div variants={itemVariants} className="space-y-6">
-          <div className="card">
+        <motion.div variants={itemVariants} className="flex flex-col gap-6 h-full justify-between">
+          <div className="card flex-1 flex flex-col justify-center">
             <h2 className="text-sm font-bold mb-4 text-[#8B8BA7] uppercase tracking-wider">Productivity Score</h2>
             <div className="flex items-center gap-4">
               <ProductivityRing score={productivityScore} />
@@ -206,17 +206,19 @@ export default function DashboardPage() {
           <Link
             href="/ai-center"
             id="dashboard-ai-btn"
-            className="card group cursor-pointer hover:border-purple-500/40 hover:-translate-y-0.5 transition-all duration-300 block"
+            className="card group cursor-pointer hover:border-purple-500/40 hover:-translate-y-0.5 transition-all duration-300 flex-1 flex flex-col justify-between"
           >
-            <div className="flex items-center gap-2 mb-2">
-              <div className="w-2 h-2 rounded-full bg-teal-400 animate-pulse" />
-              <span className="text-xs font-semibold text-teal-400">Gemini AI Ready</span>
+            <div>
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-2 h-2 rounded-full bg-teal-400 animate-pulse" />
+                <span className="text-xs font-semibold text-teal-400">Gemini AI Ready</span>
+              </div>
+              <h3 className="text-sm font-bold mb-1">Get AI Analysis</h3>
+              <p className="text-xs text-[#8B8BA7] mb-3">
+                Let AI analyze your workload and generate a smart action plan.
+              </p>
             </div>
-            <h3 className="text-sm font-bold mb-1">Get AI Analysis</h3>
-            <p className="text-xs text-[#8B8BA7] mb-3">
-              Let AI analyze your workload and generate a smart action plan.
-            </p>
-            <div className="flex items-center gap-2 text-xs text-purple-400 group-hover:gap-3 transition-all">
+            <div className="flex items-center gap-2 text-xs text-purple-400 group-hover:gap-3 transition-all mt-2">
               <Sparkles className="w-3.5 h-3.5" />
               Open AI Command Center
               <ArrowRight className="w-3.5 h-3.5" />
