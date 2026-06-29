@@ -84,72 +84,61 @@ const steps = [
 
 export default function LandingPage() {
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#0A0A0F', color: '#F0F0FF', overflowX: 'hidden' }}>
+    <div className="min-h-screen bg-[#0A0A0F] text-[#F0F0FF] overflow-x-hidden flex flex-col">
 
-      {/* ── Navbar ── */}
-      <nav style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', backgroundColor: 'rgba(10,10,15,0.9)', backdropFilter: 'blur(12px)', position: 'sticky', top: 0, zIndex: 50 }}>
-        <div style={{ maxWidth: '1152px', margin: '0 auto', padding: '0 24px', height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'linear-gradient(135deg, #6C63FF, #00D4AA)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-              <Brain style={{ width: '16px', height: '16px', color: 'white' }} />
+      {/* Navbar */}
+      <nav className="border-b border-white/5 bg-[#0A0A0F]/90 backdrop-blur-md sticky top-0 z-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+          <div className="flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#6C63FF] to-[#00D4AA] flex items-center justify-center flex-shrink-0">
+              <Brain className="w-4 h-4 text-white" />
             </div>
-            <span style={{ fontSize: '18px', fontWeight: 700 }}>
+            <span className="text-lg font-bold">
               <span className="gradient-text">FlowMind</span>
-              <span style={{ color: '#F0F0FF' }}> AI</span>
+              <span className="text-[#F0F0FF]"> AI</span>
             </span>
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <Link href="/login" style={{ fontSize: '14px', color: '#8B8BA7', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none', transition: 'color 0.2s' }}
-              onMouseEnter={e => (e.currentTarget.style.color = '#F0F0FF')}
-              onMouseLeave={e => (e.currentTarget.style.color = '#8B8BA7')}>
+          <div className="flex items-center gap-2">
+            <Link href="/login" className="text-sm text-[#8B8BA7] hover:text-[#F0F0FF] px-4 py-2 rounded-lg transition-colors">
               Sign In
             </Link>
-            <Link href="/login" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', backgroundColor: '#6C63FF', color: 'white', fontWeight: 600, fontSize: '14px', padding: '10px 20px', borderRadius: '10px', textDecoration: 'none', transition: 'background 0.2s' }}
-              onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#7B74FF')}
-              onMouseLeave={e => (e.currentTarget.style.backgroundColor = '#6C63FF')}>
-              Get Started <ArrowRight style={{ width: '14px', height: '14px' }} />
+            <Link href="/login" className="inline-flex items-center gap-2 bg-[#6C63FF] hover:bg-[#7B74FF] text-white font-semibold text-sm px-5 py-2.5 rounded-xl transition-colors">
+              Get Started <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
         </div>
       </nav>
 
-      {/* ── Hero Section ── */}
-      <section style={{ width: '100%', paddingTop: '80px', paddingBottom: '64px' }}>
-        <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}>
+      {/* Hero Section */}
+      <section className="w-full pt-16 pb-12 sm:pt-20 sm:pb-16 flex justify-center">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
 
           {/* Badge */}
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', backgroundColor: 'rgba(108,99,255,0.1)', border: '1px solid rgba(108,99,255,0.25)', borderRadius: '999px', padding: '8px 16px', fontSize: '13px', color: '#a78bfa', marginBottom: '32px' }}>
-            <Sparkles style={{ width: '14px', height: '14px' }} />
+          <div className="inline-flex items-center gap-2 bg-[#6C63FF]/10 border border-[#6C63FF]/25 rounded-full px-4 py-2 text-xs text-[#a78bfa] mb-8 font-medium">
+            <Sparkles className="w-3.5 h-3.5" />
             Powered by Google Gemini 2.0 Flash
           </div>
 
           {/* Headline */}
-          <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3.75rem)', fontWeight: 900, lineHeight: 1.1, marginBottom: '24px', letterSpacing: '-0.02em' }}>
-            Stop{' '}
-            <span className="gradient-text">Missing</span>
-            {' '}Deadlines.
+          <h1 className="text-[clamp(2.25rem,6vw,4rem)] font-black leading-[1.1] mb-6 tracking-tight max-w-3xl">
+            Stop <span className="gradient-text">Missing</span> Deadlines.
             <br />
-            Start{' '}
-            <span className="gradient-text">Completing</span>
-            {' '}Them.
+            Start <span className="gradient-text">Completing</span> Them.
           </h1>
 
           {/* Subheadline */}
-          <p style={{ fontSize: 'clamp(1rem, 2vw, 1.125rem)', color: '#8B8BA7', maxWidth: '560px', margin: '0 auto 40px', lineHeight: 1.7 }}>
-            FlowMind AI is your intelligent productivity partner that{' '}
-            <strong style={{ color: '#F0F0FF' }}>thinks</strong>,{' '}
-            <strong style={{ color: '#F0F0FF' }}>plans</strong>, and{' '}
-            <strong style={{ color: '#F0F0FF' }}>adapts</strong>
-            {' '}alongside you. Not just a reminder app — a real AI teammate.
+          <p className="text-sm sm:text-base md:text-lg text-[#8B8BA7] max-w-2xl mx-auto mb-10 leading-relaxed">
+            FlowMind AI is your intelligent productivity partner that <strong className="text-[#F0F0FF] font-semibold">thinks</strong>, <strong className="text-[#F0F0FF] font-semibold">plans</strong>, and <strong className="text-[#F0F0FF] font-semibold">adapts</strong> alongside you. Not just a reminder app — a real AI teammate.
           </p>
 
           {/* CTA Buttons */}
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', justifyContent: 'center', alignItems: 'center' }}>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full max-w-md mx-auto">
             <Link
               href="/login"
               id="cta-google-login"
-              style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '10px', background: 'linear-gradient(135deg, #6C63FF, #5B54E8)', color: 'white', fontWeight: 600, padding: '14px 28px', borderRadius: '12px', textDecoration: 'none', fontSize: '15px', transition: 'all 0.2s', boxShadow: '0 0 30px rgba(108,99,255,0.25)' }}>
-              <svg style={{ width: '18px', height: '18px' }} viewBox="0 0 24 24">
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-[#6C63FF] to-[#5B54E8] hover:from-[#7B74FF] hover:to-[#6C63FF] text-white font-semibold px-7 py-3.5 rounded-xl transition-all duration-200 shadow-[0_0_30px_rgba(108,99,255,0.25)] text-sm sm:text-base"
+            >
+              <svg className="w-4.5 h-4.5" viewBox="0 0 24 24">
                 <path fill="#fff" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
                 <path fill="#fff" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
                 <path fill="#fff" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
@@ -160,41 +149,46 @@ export default function LandingPage() {
             <Link
               href="/login?guest=true"
               id="cta-guest-login"
-              style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '8px', backgroundColor: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.12)', color: '#F0F0FF', fontWeight: 600, padding: '14px 28px', borderRadius: '12px', textDecoration: 'none', fontSize: '15px', transition: 'all 0.2s' }}>
-              <Clock style={{ width: '18px', height: '18px', color: '#8B8BA7' }} />
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-[#F0F0FF] font-semibold px-7 py-3.5 rounded-xl transition-all duration-200 text-sm sm:text-base"
+            >
+              <Clock className="w-4.5 h-4.5 text-[#8B8BA7]" />
               Try as Guest
             </Link>
           </div>
 
-          <p style={{ fontSize: '13px', color: '#4A4A6A', marginTop: '20px' }}>Free forever. No credit card required.</p>
+          <p className="text-xs text-[#4A4A6A] mt-5">Free forever. No credit card required.</p>
         </div>
+      </section>
 
-        {/* Hero Visual — Mock AI Card */}
-        <div style={{ maxWidth: '720px', margin: '56px auto 0', padding: '0 24px', position: 'relative' }}>
-          {/* Bottom fade overlay */}
-          <div style={{ position: 'absolute', left: '24px', right: '24px', bottom: 0, height: '80px', background: 'linear-gradient(to top, #0A0A0F, transparent)', zIndex: 2, pointerEvents: 'none' }} />
-          <div className="glass" style={{ borderRadius: '16px', padding: '24px', border: '1px solid rgba(108,99,255,0.2)', boxShadow: '0 0 30px rgba(108,99,255,0.15)' }}>
-            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '8px', marginBottom: '16px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#00D4AA', animation: 'pulse 2s infinite' }} />
-                <span style={{ fontSize: '13px', fontWeight: 500, color: '#8B8BA7' }}>AI Command Center</span>
+      {/* Hero Visual — Mock AI Card */}
+      <section className="w-full pb-16 flex justify-center">
+        <div className="max-w-4xl w-full mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="absolute left-4 right-4 bottom-0 h-20 bg-gradient-to-t from-[#0A0A0F] to-transparent z-10 pointer-events-none" />
+          <div className="glass rounded-2xl p-6 border border-[#6C63FF]/20 shadow-[0_0_30px_rgba(108,99,255,0.15)]">
+            <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-[#00D4AA] animate-pulse" />
+                <span className="text-xs font-medium text-[#8B8BA7]">AI Command Center</span>
               </div>
-              <span style={{ fontSize: '11px', color: '#a78bfa', backgroundColor: 'rgba(108,99,255,0.1)', padding: '4px 10px', borderRadius: '999px', border: '1px solid rgba(108,99,255,0.2)' }}>Gemini Active</span>
+              <span className="text-[10px] text-[#a78bfa] bg-[#6C63FF]/10 px-2.5 py-1 rounded-full border border-[#6C63FF]/20">Gemini Active</span>
             </div>
-            <div style={{ backgroundColor: '#1C1C27', borderRadius: '12px', padding: '16px', marginBottom: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
-              <p style={{ fontSize: '11px', color: '#8B8BA7', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.08em' }}>AI Analysis</p>
-              <p style={{ fontSize: '13px', color: '#F0F0FF', lineHeight: 1.6 }}>
+            <div className="bg-[#1C1C27] rounded-xl p-4 mb-4 border border-white/5">
+              <p className="text-[10px] text-[#8B8BA7] mb-2 uppercase tracking-wider font-semibold">AI Analysis</p>
+              <p className="text-xs sm:text-sm text-[#F0F0FF] leading-relaxed">
                 ⚠️ <strong>Overload detected.</strong> You have 14 hours of work but only 6 hours available today.
-                I&apos;ve reprioritized your tasks — focus on{' '}
-                <span style={{ color: '#a78bfa', fontWeight: 500 }}>&quot;Client Presentation&quot;</span> first.
+                I&apos;ve reprioritized your tasks — focus on <span className="text-[#a78bfa] font-medium">&quot;Client Presentation&quot;</span> first.
                 Consider moving &quot;Research Report&quot; to tomorrow.
               </p>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              {[['5', 'Tasks Today'], ['2.5h', 'Focus Time'], ['87%', 'On Track']].map(([val, label]) => (
-                <div key={label} style={{ backgroundColor: '#1C1C27', borderRadius: '10px', padding: '12px', textAlign: 'center', border: '1px solid rgba(255,255,255,0.05)' }}>
-                  <div className="gradient-text" style={{ fontSize: '20px', fontWeight: 700 }}>{val}</div>
-                  <div style={{ fontSize: '11px', color: '#8B8BA7', marginTop: '2px' }}>{label}</div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {[
+                ['5', 'Tasks Today'],
+                ['2.5h', 'Focus Time'],
+                ['87%', 'On Track']
+              ].map(([val, label]) => (
+                <div key={label} className="bg-[#1C1C27] rounded-xl p-3 text-center border border-white/5">
+                  <div className="gradient-text text-xl font-bold">{val}</div>
+                  <div className="text-[10px] text-[#8B8BA7] mt-0.5">{label}</div>
                 </div>
               ))}
             </div>
@@ -202,70 +196,67 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── Stats Bar ── */}
-      <section style={{ width: '100%', borderTop: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)', padding: '48px 0' }}>
-        <div className="max-w-4xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+      {/* Stats Bar */}
+      <section className="w-full border-y border-white/5 py-12 bg-[#0A0A0F] flex justify-center">
+        <div className="max-w-4xl w-full mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
           {[
             { value: '10K+', label: 'Tasks Completed' },
             { value: '94%', label: 'On-Time Rate' },
             { value: '3x', label: 'Productivity Boost' },
           ].map((stat) => (
-            <div key={stat.label}>
-              <div className="gradient-text" style={{ fontSize: 'clamp(1.75rem, 4vw, 2.25rem)', fontWeight: 900 }}>{stat.value}</div>
-              <div style={{ fontSize: '14px', color: '#8B8BA7', marginTop: '4px' }}>{stat.label}</div>
+            <div key={stat.label} className="flex flex-col items-center">
+              <div className="gradient-text text-3xl sm:text-4xl font-black">{stat.value}</div>
+              <div className="text-xs sm:text-sm text-[#8B8BA7] mt-1">{stat.label}</div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* ── Features Grid ── */}
-      <section style={{ width: '100%', padding: '80px 0' }}>
-        <div style={{ maxWidth: '1152px', margin: '0 auto', padding: '0 24px' }}>
-          <div style={{ textAlign: 'center', marginBottom: '56px' }}>
-            <h2 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', fontWeight: 900, marginBottom: '16px' }}>
-              Not a todo list.{' '}
-              <span className="gradient-text">An AI partner.</span>
+      {/* Features Grid */}
+      <section className="w-full py-20 flex justify-center">
+        <div className="max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-black mb-4">
+              Not a todo list. <span className="gradient-text">An AI partner.</span>
             </h2>
-            <p style={{ color: '#8B8BA7', fontSize: '16px', maxWidth: '480px', margin: '0 auto' }}>
+            <p className="text-sm sm:text-base text-[#8B8BA7] max-w-lg mx-auto leading-relaxed">
               Every feature is built around one goal: helping you complete work, not just track it.
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '20px' }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {features.map((feature) => (
-              <div key={feature.title} className="card-hover">
-                <div style={{ width: '44px', height: '44px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px' }} className={feature.iconBg}>
-                  <feature.icon style={{ width: '22px', height: '22px' }} className={feature.iconColor} />
+              <div key={feature.title} className="card-hover flex flex-col h-full bg-[#13131A] border border-[#2A2A3A] rounded-2xl p-6 transition-all duration-300">
+                <div className={`w-11 h-11 rounded-xl flex items-center justify-center mb-4 ${feature.iconBg}`}>
+                  <feature.icon className={`w-5 h-5 ${feature.iconColor}`} />
                 </div>
-                <h3 style={{ fontSize: '16px', fontWeight: 700, marginBottom: '8px', color: '#F0F0FF' }}>{feature.title}</h3>
-                <p style={{ fontSize: '13px', color: '#8B8BA7', lineHeight: 1.65 }}>{feature.description}</p>
+                <h3 className="text-base font-bold mb-2 text-[#F0F0FF]">{feature.title}</h3>
+                <p className="text-xs sm:text-sm text-[#8B8BA7] leading-relaxed flex-1">{feature.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── How It Works ── */}
-      <section style={{ width: '100%', padding: '80px 0', background: 'linear-gradient(to bottom, transparent, rgba(108,99,255,0.03), transparent)' }}>
-        <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px' }}>
-          <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-            <h2 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', fontWeight: 900, marginBottom: '12px' }}>
+      {/* How It Works */}
+      <section className="w-full py-20 bg-gradient-to-b from-transparent via-[#6C63FF]/3 to-transparent flex justify-center">
+        <div className="max-w-3xl w-full mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-black mb-4">
               How it <span className="gradient-text">works</span>
             </h2>
-            <p style={{ color: '#8B8BA7', fontSize: '16px' }}>Three steps from overwhelmed to in control.</p>
+            <p className="text-sm sm:text-base text-[#8B8BA7]">Three steps from overwhelmed to in control.</p>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <div className="flex flex-col gap-4">
             {steps.map((step) => (
-              <div key={step.number} className="glass" style={{ display: 'flex', alignItems: 'flex-start', gap: '20px', padding: '24px', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.06)', transition: 'border-color 0.3s' }}
-                onMouseEnter={e => (e.currentTarget.style.borderColor = 'rgba(108,99,255,0.25)')}
-                onMouseLeave={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)')}>
-                <div style={{ flexShrink: 0, width: '52px', height: '52px', borderRadius: '12px', background: 'linear-gradient(135deg, rgba(108,99,255,0.15), rgba(0,212,170,0.15))', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid rgba(108,99,255,0.2)' }}>
-                  <span className="gradient-text" style={{ fontSize: '18px', fontWeight: 900 }}>{step.number}</span>
+              <div key={step.number} className="glass flex items-start gap-5 p-6 rounded-2xl border border-white/5 transition-all duration-300 hover:border-[#6C63FF]/25">
+                <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-[#6C63FF]/15 to-[#00D4AA]/15 flex items-center justify-center border border-[#6C63FF]/20">
+                  <span className="gradient-text text-base font-extrabold">{step.number}</span>
                 </div>
-                <div>
-                  <h3 style={{ fontSize: '18px', fontWeight: 700, marginBottom: '6px', color: '#F0F0FF' }}>{step.title}</h3>
-                  <p style={{ color: '#8B8BA7', lineHeight: 1.65, fontSize: '14px' }}>{step.description}</p>
+                <div className="min-w-0">
+                  <h3 className="text-base sm:text-lg font-bold mb-1.5 text-[#F0F0FF]">{step.title}</h3>
+                  <p className="text-xs sm:text-sm text-[#8B8BA7] leading-relaxed">{step.description}</p>
                 </div>
               </div>
             ))}
@@ -273,32 +264,33 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── Final CTA ── */}
-      <section style={{ width: '100%', padding: '80px 0' }}>
-        <div style={{ maxWidth: '640px', margin: '0 auto', padding: '0 24px' }}>
-          <div style={{ padding: '1px', borderRadius: '20px', background: 'linear-gradient(135deg, #6C63FF, #00D4AA)' }}>
-            <div className="bg-[#0A0A0F] rounded-[19px] py-12 px-6 sm:px-10 text-center">
-              <div style={{ width: '48px', height: '48px', borderRadius: '12px', backgroundColor: 'rgba(108,99,255,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 24px' }}>
-                <BarChart3 style={{ width: '24px', height: '24px', color: '#a78bfa' }} />
+      {/* Final CTA */}
+      <section className="w-full py-20 flex justify-center">
+        <div className="max-w-2xl w-full mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="p-[1px] rounded-2xl bg-gradient-to-r from-[#6C63FF] to-[#00D4AA]">
+            <div className="bg-[#0A0A0F] rounded-[15px] py-12 px-6 sm:px-10 text-center flex flex-col items-center">
+              <div className="w-12 h-12 rounded-xl bg-[#6C63FF]/15 flex items-center justify-center mb-6">
+                <BarChart3 className="w-6 h-6 text-[#a78bfa]" />
               </div>
-              <h2 style={{ fontSize: 'clamp(1.5rem, 3.5vw, 2rem)', fontWeight: 900, marginBottom: '16px' }}>
-                Ready to stop{' '}
-                <span className="gradient-text-warm">procrastinating?</span>
+              <h2 className="text-2xl sm:text-3xl font-black mb-4">
+                Ready to stop <span className="gradient-text-warm">procrastinating?</span>
               </h2>
-              <p style={{ color: '#8B8BA7', marginBottom: '32px', lineHeight: 1.65, fontSize: '15px' }}>
+              <p className="text-xs sm:text-sm text-[#8B8BA7] mb-8 max-w-md leading-relaxed">
                 Join students and professionals who use FlowMind AI to stay ahead of their deadlines — with an AI that actually helps them complete tasks.
               </p>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', justifyContent: 'center' }}>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center w-full max-w-sm">
                 <Link
                   href="/login"
                   id="cta-bottom"
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', backgroundColor: '#6C63FF', color: 'white', fontWeight: 600, padding: '12px 28px', borderRadius: '10px', textDecoration: 'none', fontSize: '15px', transition: 'all 0.2s' }}>
-                  Start for Free <ArrowRight style={{ width: '16px', height: '16px' }} />
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#6C63FF] hover:bg-[#7B74FF] text-white font-semibold px-6 py-3 rounded-xl transition-colors text-sm"
+                >
+                  Start for Free <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
                   href="/login?guest=true"
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', backgroundColor: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.12)', color: '#F0F0FF', fontWeight: 600, padding: '12px 28px', borderRadius: '10px', textDecoration: 'none', fontSize: '15px', transition: 'all 0.2s' }}>
-                  <Clock style={{ width: '16px', height: '16px' }} />
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-[#F0F0FF] font-semibold px-6 py-3 rounded-xl transition-colors text-sm"
+                >
+                  <Clock className="w-4 h-4 text-[#8B8BA7]" />
                   Try without signup
                 </Link>
               </div>
@@ -307,22 +299,22 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── Footer ── */}
-      <footer style={{ width: '100%', borderTop: '1px solid rgba(255,255,255,0.06)', padding: '32px 0' }}>
-        <div style={{ maxWidth: '1152px', margin: '0 auto', padding: '0 24px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '16px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <div style={{ width: '24px', height: '24px', borderRadius: '6px', background: 'linear-gradient(135deg, #6C63FF, #00D4AA)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <Brain style={{ width: '12px', height: '12px', color: 'white' }} />
+      {/* Footer */}
+      <footer className="w-full border-t border-white/5 py-8 mt-auto flex justify-center bg-[#0A0A0F]">
+        <div className="max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded bg-gradient-to-br from-[#6C63FF] to-[#00D4AA] flex items-center justify-center flex-shrink-0">
+              <Brain className="w-3.5 h-3.5 text-white" />
             </div>
-            <span style={{ fontSize: '14px', fontWeight: 600 }}>
+            <span className="text-sm font-semibold">
               <span className="gradient-text">FlowMind</span> AI
             </span>
           </div>
-          <p style={{ fontSize: '13px', color: '#4A4A6A', textAlign: 'center' }}>
+          <p className="text-[11px] text-[#4A4A6A] text-center sm:text-left">
             Built with Google Gemini AI + Firebase · Coding Ninjas × Google Vibe2Ship Hackathon 2026
           </p>
-          <div style={{ fontSize: '12px', color: '#4A4A6A' }}>
-            Powered by <span style={{ color: '#8B8BA7', fontWeight: 500 }}>Gemini · Firebase · Firestore</span>
+          <div className="text-[10px] text-[#4A4A6A]">
+            Powered by <span className="text-[#8B8BA7] font-medium">Gemini · Firebase · Firestore</span>
           </div>
         </div>
       </footer>

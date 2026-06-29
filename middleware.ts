@@ -1,5 +1,4 @@
 import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
 
 /**
  * Firebase uses client-side authentication (IndexedDB / localStorage).
@@ -11,7 +10,7 @@ import type { NextRequest } from 'next/server'
  *
  * This middleware is intentionally a pass-through.
  */
-export function middleware(_request: NextRequest) {
+export function middleware() {
   return NextResponse.next()
 }
 

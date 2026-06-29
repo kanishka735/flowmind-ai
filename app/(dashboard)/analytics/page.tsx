@@ -101,7 +101,7 @@ export default function AnalyticsPage() {
       </div>
 
       {/* Top Stats Grid */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
         {[
           {
             label: 'Total Tasks',
@@ -137,13 +137,15 @@ export default function AnalyticsPage() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.07 }}
-            className="bg-[#13131A] border border-[#2A2A3A] rounded-2xl p-5"
+            className="bg-[#13131A] border border-[#2A2A3A] rounded-2xl p-6 flex flex-col justify-between"
           >
-            <div className={cn('w-9 h-9 rounded-xl flex items-center justify-center mb-3', s.bg)}>
-              <s.icon className={cn('w-4 h-4', s.color)} />
+            <div>
+              <div className={cn('w-9 h-9 rounded-xl flex items-center justify-center mb-4', s.bg)}>
+                <s.icon className={cn('w-4 h-4', s.color)} />
+              </div>
+              <div className={cn('text-3xl font-black mb-1', s.color)}>{s.value}</div>
             </div>
-            <div className={cn('text-2xl font-black mb-0.5', s.color)}>{s.value}</div>
-            <div className="text-xs text-[#8B8BA7]">{s.label}</div>
+            <div className="text-xs text-[#8B8BA7] mt-1">{s.label}</div>
           </motion.div>
         ))}
       </div>
@@ -170,17 +172,18 @@ export default function AnalyticsPage() {
             className="h-full bg-gradient-to-r from-purple-500 to-teal-500 rounded-full"
           />
         </div>
-        <div className="flex justify-between text-xs text-[#8B8BA7] mt-2">
+        <div className="flex justify-between text-xs text-[#8B8BA7] mt-3">
           <span>{stats.completed} completed</span>
           <span>{stats.total} total</span>
         </div>
 
         {/* Performance label */}
-        <div className="mt-3 text-center">
+        <div className="mt-4 text-center">
           <span className={cn(
-            'text-xs font-medium px-3 py-1 rounded-full',
+            'text-xs font-semibold px-3 py-1 rounded-full',
             stats.completionRate >= 80 ? 'bg-teal-400/10 text-teal-400' :
             stats.completionRate >= 50 ? 'bg-yellow-400/10 text-yellow-400' :
+            stats.total === 0 ? 'bg-white/5 text-[#8B8BA7]' :
             'bg-orange-400/10 text-orange-400'
           )}>
             {stats.completionRate >= 80 ? '🏆 Excellent Progress!' :
@@ -192,48 +195,50 @@ export default function AnalyticsPage() {
       </motion.div>
 
       {/* Two column: Category + Priority */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* By Category */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="bg-[#13131A] border border-[#2A2A3A] rounded-2xl p-5"
+          className="bg-[#13131A] border border-[#2A2A3A] rounded-2xl p-6 h-full flex flex-col justify-between"
         >
-          <h3 className="font-bold text-[#F0F0FF] mb-4 flex items-center gap-2">
-            <Target className="w-4 h-4 text-teal-400" />
-            By Category
-          </h3>
-          {Object.keys(stats.byCategory).length === 0 ? (
-            <p className="text-[#4A4A6A] text-sm text-center py-6">No tasks yet</p>
-          ) : (
-            <div className="space-y-3">
-              {Object.entries(stats.byCategory)
-                .sort((a, b) => b[1].total - a[1].total)
-                .map(([cat, data]) => {
-                  const pct = Math.round((data.done / data.total) * 100)
-                  return (
-                    <div key={cat}>
-                      <div className="flex items-center justify-between text-sm mb-1">
-                        <span className="text-[#F0F0FF] flex items-center gap-1.5">
-                          {CATEGORY_EMOJI[cat]}
-                          <span className="capitalize">{cat}</span>
-                        </span>
-                        <span className="text-[#8B8BA7] text-xs">{data.done}/{data.total}</span>
+          <div>
+            <h3 className="font-bold text-[#F0F0FF] mb-5 flex items-center gap-2">
+              <Target className="w-4 h-4 text-teal-400" />
+              By Category
+            </h3>
+            {Object.keys(stats.byCategory).length === 0 ? (
+              <p className="text-[#4A4A6A] text-sm text-center py-6">No tasks yet</p>
+            ) : (
+              <div className="space-y-4">
+                {Object.entries(stats.byCategory)
+                  .sort((a, b) => b[1].total - a[1].total)
+                  .map(([cat, data]) => {
+                    const pct = Math.round((data.done / data.total) * 100)
+                    return (
+                      <div key={cat}>
+                        <div className="flex items-center justify-between text-sm mb-1.5">
+                          <span className="text-[#F0F0FF] flex items-center gap-1.5">
+                            {CATEGORY_EMOJI[cat]}
+                            <span className="capitalize">{cat}</span>
+                          </span>
+                          <span className="text-[#8B8BA7] text-xs font-semibold">{data.done}/{data.total}</span>
+                        </div>
+                        <div className="h-1.5 bg-[#2A2A3A] rounded-full overflow-hidden">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            animate={{ width: `${pct}%` }}
+                            transition={{ duration: 0.8, ease: 'easeOut', delay: 0.5 }}
+                            className="h-full bg-gradient-to-r from-purple-500 to-teal-500 rounded-full"
+                          />
+                        </div>
                       </div>
-                      <div className="h-1.5 bg-[#2A2A3A] rounded-full overflow-hidden">
-                        <motion.div
-                          initial={{ width: 0 }}
-                          animate={{ width: `${pct}%` }}
-                          transition={{ duration: 0.8, ease: 'easeOut', delay: 0.5 }}
-                          className="h-full bg-gradient-to-r from-purple-500 to-teal-500 rounded-full"
-                        />
-                      </div>
-                    </div>
-                  )
-                })}
-            </div>
-          )}
+                    )
+                  })}
+              </div>
+            )}
+          </div>
         </motion.div>
 
         {/* By Priority */}
@@ -241,62 +246,64 @@ export default function AnalyticsPage() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className="bg-[#13131A] border border-[#2A2A3A] rounded-2xl p-5"
+          className="bg-[#13131A] border border-[#2A2A3A] rounded-2xl p-6 h-full flex flex-col justify-between"
         >
-          <h3 className="font-bold text-[#F0F0FF] mb-4 flex items-center gap-2">
-            <Flame className="w-4 h-4 text-orange-400" />
-            By Priority
-          </h3>
-          {Object.keys(stats.byPriority).length === 0 ? (
-            <p className="text-[#4A4A6A] text-sm text-center py-6">No tasks yet</p>
-          ) : (
-            <div className="space-y-3">
-              {(['critical', 'high', 'medium', 'low'] as const)
-                .filter((p) => stats.byPriority[p])
-                .map((priority) => {
-                  const count = stats.byPriority[priority] || 0
-                  const pct = stats.total > 0 ? Math.round((count / stats.total) * 100) : 0
-                  const barColors: Record<string, string> = {
-                    critical: 'bg-red-400',
-                    high: 'bg-orange-400',
-                    medium: 'bg-yellow-400',
-                    low: 'bg-green-400',
-                  }
-                  return (
-                    <div key={priority}>
-                      <div className="flex items-center justify-between text-sm mb-1">
-                        <span className={cn(
-                          'text-xs px-2 py-0.5 rounded-full border font-medium capitalize',
-                          PRIORITY_COLORS[priority]
-                        )}>
-                          {priority}
-                        </span>
-                        <span className="text-[#8B8BA7] text-xs">{count} tasks ({pct}%)</span>
+          <div>
+            <h3 className="font-bold text-[#F0F0FF] mb-5 flex items-center gap-2">
+              <Flame className="w-4 h-4 text-orange-400" />
+              By Priority
+            </h3>
+            {Object.keys(stats.byPriority).length === 0 ? (
+              <p className="text-[#4A4A6A] text-sm text-center py-6">No tasks yet</p>
+            ) : (
+              <div className="space-y-4">
+                {(['critical', 'high', 'medium', 'low'] as const)
+                  .filter((p) => stats.byPriority[p])
+                  .map((priority) => {
+                    const count = stats.byPriority[priority] || 0
+                    const pct = stats.total > 0 ? Math.round((count / stats.total) * 100) : 0
+                    const barColors: Record<string, string> = {
+                      critical: 'bg-red-400',
+                      high: 'bg-orange-400',
+                      medium: 'bg-yellow-400',
+                      low: 'bg-green-400',
+                    }
+                    return (
+                      <div key={priority}>
+                        <div className="flex items-center justify-between text-sm mb-1.5">
+                          <span className={cn(
+                            'text-[10px] px-2 py-0.5 rounded-full border font-semibold capitalize',
+                            PRIORITY_COLORS[priority]
+                          )}>
+                            {priority}
+                          </span>
+                          <span className="text-[#8B8BA7] text-xs font-semibold">{count} tasks ({pct}%)</span>
+                        </div>
+                        <div className="h-1.5 bg-[#2A2A3A] rounded-full overflow-hidden">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            animate={{ width: `${pct}%` }}
+                            transition={{ duration: 0.8, ease: 'easeOut', delay: 0.6 }}
+                            className={cn('h-full rounded-full', barColors[priority])}
+                          />
+                        </div>
                       </div>
-                      <div className="h-1.5 bg-[#2A2A3A] rounded-full overflow-hidden">
-                        <motion.div
-                          initial={{ width: 0 }}
-                          animate={{ width: `${pct}%` }}
-                          transition={{ duration: 0.8, ease: 'easeOut', delay: 0.6 }}
-                          className={cn('h-full rounded-full', barColors[priority])}
-                        />
-                      </div>
-                    </div>
-                  )
-                })}
-            </div>
-          )}
+                    )
+                  })}
+              </div>
+            )}
+          </div>
 
           {/* Avg difficulty */}
-          <div className="mt-4 pt-4 border-t border-[#2A2A3A]">
+          <div className="mt-6 pt-5 border-t border-[#2A2A3A]">
             <div className="flex justify-between text-sm">
-              <span className="text-[#8B8BA7]">Avg. Difficulty</span>
+              <span className="text-[#8B8BA7] font-semibold">Avg. Difficulty</span>
               <div className="flex items-center gap-1">
                 <span className="text-[#F0F0FF] font-bold">{stats.avgDifficulty}</span>
-                <span className="text-[#4A4A6A] text-xs">/ 5</span>
+                <span className="text-[#4A4A6A] text-xs font-semibold">/ 5</span>
               </div>
             </div>
-            <div className="flex gap-1 mt-2">
+            <div className="flex gap-1 mt-2.5">
               {[1, 2, 3, 4, 5].map((d) => (
                 <div
                   key={d}

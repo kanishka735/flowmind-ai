@@ -142,24 +142,26 @@ export default function DashboardPage() {
       className="max-w-6xl mx-auto space-y-6"
     >
       {/* Stats grid */}
-      <motion.div variants={itemVariants} className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <motion.div variants={itemVariants} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((stat) => (
-          <div key={stat.label} className="card">
-            <div className="flex items-start justify-between mb-3">
-              <div className={cn('p-2 rounded-lg', stat.bg)}>
-                <stat.icon className={cn('w-4 h-4', stat.color)} />
+          <div key={stat.label} className="card flex flex-col justify-between">
+            <div>
+              <div className="flex items-start justify-between mb-4">
+                <div className={cn('p-2 rounded-xl', stat.bg)}>
+                  <stat.icon className={cn('w-4 h-4', stat.color)} />
+                </div>
               </div>
+              <div className="text-3xl font-black text-[#F0F0FF] mb-1">{stat.value}</div>
+              <div className="text-xs font-semibold text-[#8B8BA7]">{stat.label}</div>
             </div>
-            <div className="text-2xl font-black text-[#F0F0FF] mb-0.5">{stat.value}</div>
-            <div className="text-xs font-medium text-[#8B8BA7]">{stat.label}</div>
-            <div className="text-xs text-[#4A4A6A] mt-1">{stat.sub}</div>
+            <div className="text-xs text-[#4A4A6A] mt-2 pt-2 border-t border-white/5">{stat.sub}</div>
           </div>
         ))}
       </motion.div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Today's focus */}
-        <motion.div variants={itemVariants} className="lg:col-span-2 card">
+        <motion.div variants={itemVariants} className="lg:col-span-2 card flex flex-col justify-between">
           <div className="flex items-center justify-between mb-5">
             <h2 className="text-base font-bold">Upcoming Deadlines</h2>
             <Link href="/tasks" className="text-xs text-purple-400 hover:text-purple-300 flex items-center gap-1">
@@ -187,7 +189,7 @@ export default function DashboardPage() {
         </motion.div>
 
         {/* Productivity score + AI prompt */}
-        <motion.div variants={itemVariants} className="space-y-4">
+        <motion.div variants={itemVariants} className="space-y-6">
           <div className="card">
             <h2 className="text-sm font-bold mb-4 text-[#8B8BA7] uppercase tracking-wider">Productivity Score</h2>
             <div className="flex items-center gap-4">

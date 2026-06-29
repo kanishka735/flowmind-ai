@@ -15,7 +15,7 @@ export function Header({ onMenuToggle, sidebarOpen }: HeaderProps) {
   const greeting = getGreeting()
 
   return (
-    <header className="flex-shrink-0 flex items-center justify-between px-4 sm:px-6 h-14 border-b border-[#2A2A3A] bg-[#13131A]/80 backdrop-blur-sm">
+    <header className="flex-shrink-0 flex items-center justify-between px-4 sm:px-6 lg:px-8 h-14 border-b border-[#2A2A3A] bg-[#13131A]/80 backdrop-blur-sm">
 
       {/* Left: mobile menu toggle + greeting */}
       <div className="flex items-center gap-3 min-w-0">

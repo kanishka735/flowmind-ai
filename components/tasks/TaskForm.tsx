@@ -78,6 +78,7 @@ export function TaskForm({ onSubmit, onClose, initialData, userId, mode }: TaskF
     },
   })
 
+  // eslint-disable-next-line react-hooks/incompatible-library
   const watchedPriority = watch('priority')
   const watchedCategory = watch('category')
   const watchedDifficulty = watch('difficulty')
@@ -149,17 +150,17 @@ export function TaskForm({ onSubmit, onClose, initialData, userId, mode }: TaskF
           </div>
 
           {/* Form */}
-          <form onSubmit={handleSubmit(handleFormSubmit)} className="p-6 space-y-5 max-h-[70vh] overflow-y-auto">
+          <form onSubmit={handleSubmit(handleFormSubmit)} className="p-6 space-y-6 max-h-[70vh] overflow-y-auto">
             {/* Title */}
             <div>
-              <label className="block text-sm font-medium text-[#F0F0FF] mb-1.5">
+              <label className="block text-sm font-semibold text-[#F0F0FF] mb-2">
                 Task Title <span className="text-red-400">*</span>
               </label>
               <input
                 {...register('title')}
                 id="task-title"
                 placeholder="e.g., Finish project report"
-                className="input-dark"
+                className="input-dark h-12"
               />
               {errors.title && (
                 <p className="text-red-400 text-xs mt-1">{errors.title.message}</p>
@@ -168,7 +169,7 @@ export function TaskForm({ onSubmit, onClose, initialData, userId, mode }: TaskF
 
             {/* Description */}
             <div>
-              <label className="block text-sm font-medium text-[#F0F0FF] mb-1.5">
+              <label className="block text-sm font-semibold text-[#F0F0FF] mb-2">
                 Description <span className="text-[#4A4A6A] font-normal">(optional)</span>
               </label>
               <textarea
@@ -176,14 +177,14 @@ export function TaskForm({ onSubmit, onClose, initialData, userId, mode }: TaskF
                 id="task-description"
                 rows={2}
                 placeholder="Additional details..."
-                className="input-dark resize-none"
+                className="input-dark resize-none py-3"
               />
             </div>
 
             {/* Priority */}
             <div>
-              <label className="block text-sm font-medium text-[#F0F0FF] mb-1.5">
-                <Flame className="w-3.5 h-3.5 inline mr-1 text-orange-400" />
+              <label className="block text-sm font-semibold text-[#F0F0FF] mb-2">
+                <Flame className="w-4 h-4 inline mr-1 text-orange-400" />
                 Priority <span className="text-red-400">*</span>
               </label>
               <div className="grid grid-cols-4 gap-2">
@@ -193,7 +194,7 @@ export function TaskForm({ onSubmit, onClose, initialData, userId, mode }: TaskF
                     type="button"
                     onClick={() => setValue('priority', opt.value)}
                     className={cn(
-                      'px-3 py-2 rounded-xl text-xs font-medium border transition-all duration-150 text-center',
+                      'h-10 rounded-xl text-xs font-semibold border transition-all duration-150 flex items-center justify-center text-center',
                       watchedPriority === opt.value
                         ? opt.color
                         : 'border-[#2A2A3A] bg-[#1C1C27] text-[#8B8BA7] hover:border-white/20'
@@ -208,8 +209,8 @@ export function TaskForm({ onSubmit, onClose, initialData, userId, mode }: TaskF
             {/* Deadline + Duration row */}
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-[#F0F0FF] mb-1.5">
-                  <Calendar className="w-3.5 h-3.5 inline mr-1 text-purple-400" />
+                <label className="block text-sm font-semibold text-[#F0F0FF] mb-2">
+                  <Calendar className="w-4 h-4 inline mr-1 text-purple-400" />
                   Deadline <span className="text-red-400">*</span>
                 </label>
                 <input
@@ -217,7 +218,7 @@ export function TaskForm({ onSubmit, onClose, initialData, userId, mode }: TaskF
                   id="task-deadline"
                   type="date"
                   min={today}
-                  className="input-dark [color-scheme:dark]"
+                  className="input-dark h-12 [color-scheme:dark]"
                 />
                 {errors.deadline && (
                   <p className="text-red-400 text-xs mt-1">{errors.deadline.message}</p>
@@ -225,8 +226,8 @@ export function TaskForm({ onSubmit, onClose, initialData, userId, mode }: TaskF
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-[#F0F0FF] mb-1.5">
-                  <Clock className="w-3.5 h-3.5 inline mr-1 text-teal-400" />
+                <label className="block text-sm font-semibold text-[#F0F0FF] mb-2">
+                  <Clock className="w-4 h-4 inline mr-1 text-teal-400" />
                   Est. Time (min)
                 </label>
                 <input
@@ -236,20 +237,20 @@ export function TaskForm({ onSubmit, onClose, initialData, userId, mode }: TaskF
                   min={15}
                   max={1440}
                   step={15}
-                  className="input-dark"
+                  className="input-dark h-12"
                 />
                 {/* Quick presets */}
-                <div className="flex gap-1 mt-1.5 flex-wrap">
+                <div className="flex gap-1.5 mt-2 flex-wrap">
                   {DURATION_PRESETS.map((p) => (
                     <button
                       key={p.value}
                       type="button"
                       onClick={() => setValue('estimatedDuration', p.value)}
                       className={cn(
-                        'text-xs px-2 py-0.5 rounded-md transition-colors',
+                        'text-xs px-2.5 py-1 rounded-lg transition-colors border',
                         watchedDuration === p.value
-                          ? 'bg-purple-500/20 text-purple-400 border border-purple-500/30'
-                          : 'bg-white/5 text-[#8B8BA7] hover:bg-white/10'
+                          ? 'bg-purple-500/20 text-purple-400 border-purple-500/30'
+                          : 'bg-white/5 border-transparent text-[#8B8BA7] hover:bg-white/10'
                       )}
                     >
                       {p.label}
@@ -261,8 +262,8 @@ export function TaskForm({ onSubmit, onClose, initialData, userId, mode }: TaskF
 
             {/* Category */}
             <div>
-              <label className="block text-sm font-medium text-[#F0F0FF] mb-1.5">
-                <Tag className="w-3.5 h-3.5 inline mr-1 text-blue-400" />
+              <label className="block text-sm font-semibold text-[#F0F0FF] mb-2">
+                <Tag className="w-4 h-4 inline mr-1 text-blue-400" />
                 Category
               </label>
               <div className="grid grid-cols-3 gap-2">
@@ -272,7 +273,7 @@ export function TaskForm({ onSubmit, onClose, initialData, userId, mode }: TaskF
                     type="button"
                     onClick={() => setValue('category', opt.value)}
                     className={cn(
-                      'px-3 py-2 rounded-xl text-xs font-medium border transition-all duration-150 text-center',
+                      'h-10 rounded-xl text-xs font-semibold border transition-all duration-150 flex items-center justify-center text-center',
                       watchedCategory === opt.value
                         ? 'border-purple-500/50 bg-purple-500/10 text-purple-300'
                         : 'border-[#2A2A3A] bg-[#1C1C27] text-[#8B8BA7] hover:border-white/20'
@@ -286,7 +287,7 @@ export function TaskForm({ onSubmit, onClose, initialData, userId, mode }: TaskF
 
             {/* Difficulty */}
             <div>
-              <label className="block text-sm font-medium text-[#F0F0FF] mb-2">
+              <label className="block text-sm font-semibold text-[#F0F0FF] mb-2">
                 Difficulty
                 <span className="ml-2 text-[#8B8BA7] font-normal text-xs">
                   ({['', 'Very Easy', 'Easy', 'Moderate', 'Hard', 'Very Hard'][watchedDifficulty]})
@@ -299,10 +300,10 @@ export function TaskForm({ onSubmit, onClose, initialData, userId, mode }: TaskF
                     type="button"
                     onClick={() => setValue('difficulty', level as Difficulty)}
                     className={cn(
-                      'flex-1 h-8 rounded-lg text-sm font-bold transition-all duration-150',
+                      'flex-1 h-10 rounded-xl text-sm font-bold transition-all duration-150 flex items-center justify-center',
                       watchedDifficulty >= level
                         ? 'bg-gradient-to-b from-purple-500 to-purple-600 text-white'
-                        : 'bg-[#1C1C27] text-[#4A4A6A] hover:bg-[#2A2A3A]'
+                        : 'bg-[#1C1C27] text-[#4A4A6A] border border-[#2A2A3A] hover:bg-[#2A2A3A]'
                     )}
                   >
                     {level}
@@ -312,11 +313,11 @@ export function TaskForm({ onSubmit, onClose, initialData, userId, mode }: TaskF
             </div>
 
             {/* Submit */}
-            <div className="flex gap-3 pt-2">
+            <div className="flex gap-3 pt-4 border-t border-[#2A2A3A]">
               <button
                 type="button"
                 onClick={onClose}
-                className="flex-1 btn-secondary py-3"
+                className="flex-1 h-12 btn-secondary flex items-center justify-center"
               >
                 Cancel
               </button>
@@ -324,7 +325,7 @@ export function TaskForm({ onSubmit, onClose, initialData, userId, mode }: TaskF
                 id="task-submit-btn"
                 type="submit"
                 disabled={isSubmitting}
-                className="flex-1 btn-primary py-3 flex items-center justify-center gap-2"
+                className="flex-1 h-12 btn-primary flex items-center justify-center gap-2"
               >
                 {isSubmitting ? (
                   <>

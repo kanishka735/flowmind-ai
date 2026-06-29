@@ -75,7 +75,7 @@ function LoginContent() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0A0A0F] flex items-center justify-center px-4 relative overflow-hidden">
+    <div className="min-h-screen bg-[#0A0A0F] flex items-center justify-center px-4 py-8 sm:px-6 lg:px-8 relative overflow-hidden">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-purple-600/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-[400px] h-[300px] bg-teal-600/5 rounded-full blur-3xl pointer-events-none" />
 
@@ -83,9 +83,9 @@ function LoginContent() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="w-full max-w-md"
+        className="w-full max-w-[420px] mx-auto flex flex-col items-center justify-center"
       >
-        <div className="text-center mb-10">
+        <div className="text-center mb-8 flex flex-col items-center">
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -94,16 +94,16 @@ function LoginContent() {
           >
             <Brain className="w-8 h-8 text-white" />
           </motion.div>
-          <h1 className="text-3xl font-black mb-2">
+          <h1 className="text-3xl font-black mb-1.5">
             <span className="gradient-text">FlowMind</span>{' '}
             <span className="text-[#F0F0FF]">AI</span>
           </h1>
           <p className="text-[#8B8BA7] text-sm">Your AI productivity partner</p>
         </div>
 
-        <div className="glass rounded-2xl p-8 border border-purple-500/20 shadow-glow-purple">
+        <div className="glass w-full rounded-2xl p-6 sm:p-8 border border-purple-500/20 shadow-glow-purple">
           <h2 className="text-xl font-bold text-center mb-1">Welcome back</h2>
-          <p className="text-[#8B8BA7] text-sm text-center mb-8">
+          <p className="text-[#8B8BA7] text-sm text-center mb-6">
             Sign in to access your personalized AI planner
           </p>
 
@@ -111,7 +111,7 @@ function LoginContent() {
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="flex items-start gap-2 bg-red-500/10 border border-red-500/20 rounded-xl p-3 mb-6 text-sm text-red-400"
+              className="flex items-start gap-2 bg-red-500/10 border border-red-500/20 rounded-xl p-3 mb-5 text-sm text-red-400"
             >
               <AlertCircle className="w-4 h-4 flex-shrink-0 mt-0.5" />
               <span>{error}</span>
@@ -123,7 +123,7 @@ function LoginContent() {
               id="btn-google-login"
               onClick={handleGoogleLogin}
               disabled={isGoogleLoading || isGuestLoading}
-              className="w-full flex items-center justify-center gap-3 bg-white hover:bg-gray-50 text-gray-900 font-semibold px-6 py-3.5 rounded-xl transition-all duration-200 active:scale-95 disabled:opacity-60 disabled:cursor-not-allowed shadow-sm"
+              className="w-full h-12 flex items-center justify-center gap-3 bg-white hover:bg-gray-50 text-gray-900 font-semibold px-6 rounded-xl transition-all duration-200 active:scale-95 disabled:opacity-60 disabled:cursor-not-allowed shadow-sm text-sm"
             >
               {isGoogleLoading ? (
                 <Loader2 className="w-5 h-5 animate-spin text-gray-600" />
@@ -138,7 +138,7 @@ function LoginContent() {
               {isGoogleLoading ? 'Signing in...' : 'Continue with Google'}
             </button>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 py-1">
               <div className="flex-1 h-px bg-white/10" />
               <span className="text-xs text-[#4A4A6A]">or</span>
               <div className="flex-1 h-px bg-white/10" />
@@ -148,7 +148,7 @@ function LoginContent() {
               id="btn-guest-login"
               onClick={handleGuestLogin}
               disabled={isGoogleLoading || isGuestLoading}
-              className="w-full flex items-center justify-center gap-3 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-[#F0F0FF] font-semibold px-6 py-3.5 rounded-xl transition-all duration-200 active:scale-95 disabled:opacity-60 disabled:cursor-not-allowed"
+              className="w-full h-12 flex items-center justify-center gap-3 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-[#F0F0FF] font-semibold px-6 rounded-xl transition-all duration-200 active:scale-95 disabled:opacity-60 disabled:cursor-not-allowed text-sm"
             >
               {isGuestLoading ? (
                 <Loader2 className="w-5 h-5 animate-spin" />

@@ -94,36 +94,37 @@ export default function AICenterPage() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-4xl mx-auto space-y-6 animate-fade-in">
       {/* Page Header */}
-      <div className="mb-8">
-        <div className="flex flex-wrap items-start gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500/20 to-teal-500/20 border border-purple-500/30 flex items-center justify-center flex-shrink-0">
-            <Brain className="w-5 h-5 text-purple-400" />
+      <div>
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500/20 to-teal-500/20 border border-purple-500/30 flex items-center justify-center flex-shrink-0">
+              <Brain className="w-5 h-5 text-purple-400" />
+            </div>
+            <div className="min-w-0">
+              <h1 className="text-xl sm:text-2xl font-black text-[#F0F0FF]">AI Command Center</h1>
+              <p className="text-[#8B8BA7] text-xs">Powered by Google Gemini 2.0 Flash</p>
+            </div>
           </div>
-          <div className="flex-1 min-w-0">
-            <h1 className="text-xl sm:text-2xl font-black text-[#F0F0FF]">AI Command Center</h1>
-            <p className="text-[#8B8BA7] text-sm">Powered by Google Gemini 2.0 Flash</p>
-          </div>
-          <div className="flex items-center gap-1.5 text-xs text-teal-400 bg-teal-400/10 border border-teal-400/20 rounded-full px-3 py-1 flex-shrink-0 self-center">
+          <div className="flex items-center gap-1.5 text-xs text-teal-400 bg-teal-400/10 border border-teal-400/20 rounded-full px-3 py-1 flex-shrink-0">
             <div className="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse" />
-            <span className="hidden sm:inline">Gemini Active</span>
-            <span className="sm:hidden">Live</span>
+            <span>Gemini Active</span>
           </div>
         </div>
       </div>
 
       {/* Configuration Panel */}
-      <div className="bg-[#13131A] border border-[#2A2A3A] rounded-2xl p-6 mb-6">
+      <div className="bg-[#13131A] border border-[#2A2A3A] rounded-2xl p-6">
         <h2 className="text-base font-bold text-[#F0F0FF] mb-4 flex items-center gap-2">
           <Sparkles className="w-4 h-4 text-purple-400" />
           Configure Analysis
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Available hours */}
-          <div>
-            <label className="block text-sm font-medium text-[#F0F0FF] mb-2">
+          <div className="space-y-3">
+            <label className="block text-sm font-semibold text-[#F0F0FF]">
               How many hours do you have today?
             </label>
             <div className="flex gap-2 flex-wrap">
@@ -132,7 +133,7 @@ export default function AICenterPage() {
                   key={h}
                   onClick={() => setAvailableHours(h)}
                   className={cn(
-                    'px-3 py-1.5 rounded-xl text-sm font-semibold border transition-all duration-150',
+                    'px-4 py-2 rounded-xl text-sm font-semibold border transition-all duration-150',
                     availableHours === h
                       ? 'bg-purple-500/20 border-purple-500/50 text-purple-300'
                       : 'bg-[#1C1C27] border-[#2A2A3A] text-[#8B8BA7] hover:border-white/20'
@@ -146,14 +147,14 @@ export default function AICenterPage() {
 
           {/* Task summary */}
           <div className="flex flex-col justify-end">
-            <div className="bg-[#1C1C27] rounded-xl p-3 border border-[#2A2A3A]">
-              <div className="flex justify-between text-xs text-[#8B8BA7] mb-1">
+            <div className="bg-[#1C1C27] rounded-xl p-4 border border-[#2A2A3A]">
+              <div className="flex justify-between text-xs text-[#8B8BA7] mb-2">
                 <span>Work needed</span>
-                <span className={totalHoursNeeded > availableHours ? 'text-red-400 font-semibold' : 'text-teal-400'}>
+                <span className={totalHoursNeeded > availableHours ? 'text-red-400 font-semibold' : 'text-teal-400 font-semibold'}>
                   {totalHoursNeeded}h / {availableHours}h available
                 </span>
               </div>
-              <div className="h-1.5 bg-[#2A2A3A] rounded-full overflow-hidden">
+              <div className="h-2 bg-[#2A2A3A] rounded-full overflow-hidden">
                 <div
                   className={cn(
                     'h-full rounded-full transition-all duration-500',
@@ -166,7 +167,7 @@ export default function AICenterPage() {
                   }}
                 />
               </div>
-              <p className="text-xs text-[#4A4A6A] mt-1">
+              <p className="text-xs text-[#4A4A6A] mt-2 font-medium">
                 {pendingTasks.length} pending tasks
               </p>
             </div>
@@ -174,10 +175,10 @@ export default function AICenterPage() {
         </div>
 
         {/* Goal input */}
-        <div className="mt-4">
-          <label className="block text-sm font-medium text-[#F0F0FF] mb-1.5">
+        <div className="mt-6 space-y-2">
+          <label className="block text-sm font-semibold text-[#F0F0FF]">
             What&apos;s your main goal today?{' '}
-            <span className="text-[#4A4A6A] font-normal">(optional)</span>
+            <span className="text-[#4A4A6A] font-normal text-xs">(optional)</span>
           </label>
           <input
             id="ai-goal-input"
@@ -186,7 +187,7 @@ export default function AICenterPage() {
             value={userGoal}
             onChange={(e) => setUserGoal(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && runAnalysis()}
-            className="input-dark"
+            className="input-dark h-12"
           />
         </div>
 
@@ -195,7 +196,7 @@ export default function AICenterPage() {
           id="btn-run-analysis"
           onClick={runAnalysis}
           disabled={isAnalyzing || tasksLoading || pendingTasks.length === 0}
-          className="mt-5 w-full btn-primary py-3.5 flex items-center justify-center gap-2 text-base disabled:opacity-50 disabled:cursor-not-allowed"
+          className="mt-6 w-full h-12 btn-primary flex items-center justify-center gap-2 text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isAnalyzing ? (
             <>
@@ -211,7 +212,7 @@ export default function AICenterPage() {
         </button>
 
         {pendingTasks.length === 0 && !tasksLoading && (
-          <p className="text-xs text-[#8B8BA7] text-center mt-2">
+          <p className="text-xs text-[#8B8BA7] text-center mt-3">
             Add tasks from the &quot;My Tasks&quot; page first.
           </p>
         )}
@@ -222,7 +223,7 @@ export default function AICenterPage() {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex items-start gap-3 bg-red-500/10 border border-red-500/20 rounded-2xl p-4 mb-6"
+          className="flex items-start gap-3 bg-red-500/10 border border-red-500/20 rounded-2xl p-4"
         >
           <AlertTriangle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
           <p className="text-sm text-red-400">{error}</p>
@@ -235,7 +236,7 @@ export default function AICenterPage() {
           {[...Array(4)].map((_, i) => (
             <div key={i} className="h-20 skeleton rounded-2xl" style={{ animationDelay: `${i * 0.1}s` }} />
           ))}
-          <p className="text-center text-sm text-[#8B8BA7] animate-pulse">
+          <p className="text-center text-sm text-[#8B8BA7] animate-pulse mt-2">
             Gemini AI is reading your tasks and building your personalized plan...
           </p>
         </div>
